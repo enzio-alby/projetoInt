@@ -1,0 +1,57 @@
+
+body {
+    background-color: white;
+    color: black;
+}
+
+.navbar,
+.offcanvas-header {
+    background-color: #663399;
+}
+
+.table-dark {
+    background-color: #663399 !important;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #4B0082;
+    border-color: #4B0082;
+}
+
+.btn-primary:hover {
+    background-color: #663399;
+    border-color: #663399;
+}
+
+#rankingSection {
+    display: none;
+}
+
+.estrela {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: gray;
+    transition: color 0.2s;
+}
+
+.estrela.text-warning {
+    color: #ffc107 !important;
+}
+
+textarea.comentario {
+    min-width: 150px;
+}
+
+.status-text {
+    font-weight: 500;
+}
+
+.data-hora {
+    font-size: 0.75rem;
+    font-style: italic;
+}
+
+.btn-outline-secondary .fas.fa-pen {
+    pointer-events: none;
+}

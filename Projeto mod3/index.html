@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking+ University</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papPapPapS0+..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
+                aria-controls="sidebar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <span class="navbar-brand mb-0 h1">Ranking+</span>
+        </div>
+        
+    </nav>
+    <div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="sidebar">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-white">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="index.html" class="btn btn-primary">Página Inicial</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="turmas.html" class="btn btn-primary">Turmas</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="materias.html" class="btn btn-primary">Matérias</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="areaprofessor.html" class="btn btn-primary">Área do Professor</a>
+                </li>
+                <li class="list-group-item">
+                    <button class="btn btn-primary" onclick="mostrarRanking()">Ranking de Alunos</button>
+                </li>
+                <li class="list-group-item">
+                    <a href="chamada.html" class="btn btn-primary">Chamada</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <!-- Boas-vindas -->
+        <div class="text-center mb-5">
+            <h1>Seja bem-vindo, <span id="nomeAluno">[Nome do Aluno]</span>!</h1>
+            <p class="text-center">Aqui você pode acompanhar suas aulas, atividades e evolução acadêmica.</p>
+        </div>
+
+        <!-- Timeline de notícias e avisos -->
+        <div class="mb-5">
+            <h2 class="text-center">Notícias e Avisos</h2>
+            <ul class="list-group mt-3">
+                <li class="list-group-item">
+                    <strong>Próxima aula:</strong> Matemática - Segunda-feira, 10h
+                </li>
+                <li class="list-group-item">
+                    <strong>Atividade pendente:</strong> Entregar trabalho de Física até sexta-feira
+                </li>
+                <li class="list-group-item">
+                    <strong>Aviso:</strong> Semana de provas começa em 15 de maio
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mt-5">
+    <div class="row">
+        <!-- Calendário de aulas -->
+        <div class="col-md-6 mb-5">
+            <h2 class="text-center">Calendário de Aulas</h2>
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Matéria</th>
+                            <th>Horário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Segunda</td>
+                            <td><a href="materias.html">Algoritmos e Estruturas de Dados</a></td>
+                            <td>10h</td>
+                        </tr>
+                        <tr>
+                            <td>Terça</td>
+                            <td><a href="materias.html">Bancos de Dados</a></td>
+                            <td>14h</td>
+                        </tr>
+                        <tr>
+                            <td>Quarta</td>
+                            <td><a href="materias.html">Redes de Computadores</a></td>
+                            <td>10h</td>
+                        </tr>
+                        <tr>
+                            <td>Quinta</td>
+                            <td><a href="materias.html">Engenharia de Software</a></td>
+                            <td>16h</td>
+                        </tr>
+                        <tr>
+                            <td>Sexta</td>
+                            <td><a href="materias.html">Algoritmos e Estruturas de Dados</a></td>
+                            <td>10h</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Desempenho acadêmico -->
+        <div class="col-md-6 mb-5">
+            <h2 class="text-center">Desempenho Acadêmico</h2>
+            <div class="table-responsive mt-3">
+                <table class="table table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>Disciplinas</th>
+                            <th>Faltas</th>
+                            <th>Notas</th>
+                            <th>Média</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Algoritmos e Estruturas de Dados</td>
+                            <td><span style="color: green;">2</span></td>
+                            <td><span style="color: green;">8.5</span></td>
+                            <td><span style="color: green;">8.0</span></td>
+                        </tr>
+                        <tr>
+                            <td>Bancos de Dados</td>
+                            <td><span style="color: red;">5</span></td>
+                            <td><span style="color: green;">7.0</span></td>
+                            <td><span style="color: red;">6.5</span></td>
+                        </tr>
+                        <tr>
+                            <td>Redes de Computadores</td>
+                            <td><span style="color: green;">1</span></td>
+                            <td><span style="color: green;">9.0</span></td>
+                            <td><span style="color: green;">8.5</span></td>
+                        </tr>
+                        <tr>
+                            <td>Engenharia de Software</td>
+                            <td><span style="color: red;">4</span></td>
+                            <td><span style="color: red;">6.5</span></td>
+                            <td><span style="color: red;">6.0</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <div class="container mt-5 text-center">
+        <a href="turmas.html" class="btn btn-primary m-2">Ver Turmas</a>
+        <a class="btn btn-secondary m-2" onclick="mostrarRanking()">Painel do Ranking</a>
+    </div>
+    <div class="container mt-5" id="rankingSection">
+        <h2 class="text-center">Ranking de Alunos</h2>
+        <ul class="nav nav-tabs" id="rankingTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="ads-tab" data-bs-toggle="tab" data-bs-target="#ads" type="button"
+                    role="tab">ADS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="cc-tab" data-bs-toggle="tab" data-bs-target="#cc" type="button"
+                    role="tab">Ciência da Computação</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="engcomp-tab" data-bs-toggle="tab" data-bs-target="#engcomp" type="button"
+                    role="tab">Engenharia da Computação</button>
+            </li>
+        </ul>
+        <div class="tab-content mt-3" id="rankingContent">
+            <!-- ADS -->
+            <div class="tab-pane fade show active" id="ads" role="tabpanel">
+                <h3>Turmas de ADS</h3>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('ads-matutino')">Matutino</button>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('ads-vespertino')">Vespertino</button>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('ads-noturno')">Noturno</button>
+                <div id="ads-matutino">
+                    <h4>Turma Matutina</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('ads-matutino-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('ads-matutino-b')">Turma B</button>
+                    <div id="ads-matutino-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 1; i <= 15; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="ads-matutino-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 16; i <= 30; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="ads-vespertino" style="display: none;">
+                    <h4>Turma Vespertina</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('ads-vespertino-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('ads-vespertino-b')">Turma B</button>
+                    <div id="ads-vespertino-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 31; i <= 45; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="ads-vespertino-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 46; i <= 60; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="ads-noturno" style="display: none;">
+                    <h4>Turma Noturna</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('ads-noturno-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('ads-noturno-b')">Turma B</button>
+                    <div id="ads-noturno-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 61; i <= 75; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="ads-noturno-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 76; i <= 90; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ciência da Computação -->
+            <div class="tab-pane fade" id="cc" role="tabpanel">
+                <h3>Turmas de Ciência da Computação</h3>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('cc-matutino')">Matutino</button>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('cc-vespertino')">Vespertino</button>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('cc-noturno')">Noturno</button>
+                <div id="cc-matutino">
+                    <h4>Turma Matutina</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('cc-matutino-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('cc-matutino-b')">Turma B</button>
+                    <div id="cc-matutino-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 1; i <= 15; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="cc-matutino-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 16; i <= 30; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="cc-vespertino" style="display: none;">
+                    <h4>Turma Vespertina</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('cc-vespertino-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('cc-vespertino-b')">Turma B</button>
+                    <div id="cc-vespertino-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 31; i <= 45; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="cc-vespertino-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 46; i <= 60; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="cc-noturno" style="display: none;">
+                    <h4>Turma Noturna</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('cc-noturno-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('cc-noturno-b')">Turma B</button>
+                    <div id="cc-noturno-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 61; i <= 75; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="cc-noturno-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 76; i <= 90; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engenharia da Computação -->
+            <div class="tab-pane fade" id="engcomp" role="tabpanel">
+                <h3>Turmas de Engenharia da Computação</h3>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('engcomp-matutino')">Matutino</button>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('engcomp-vespertino')">Vespertino</button>
+                <button class="btn btn-primary mb-3" onclick="toggleTurno('engcomp-noturno')">Noturno</button>
+                <div id="engcomp-matutino">
+                    <h4>Turma Matutina</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('engcomp-matutino-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('engcomp-matutino-b')">Turma B</button>
+                    <div id="engcomp-matutino-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 1; i <= 15; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="engcomp-matutino-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 16; i <= 30; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="engcomp-vespertino" style="display: none;">
+                    <h4>Turma Vespertina</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('engcomp-vespertino-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('engcomp-vespertino-b')">Turma B</button>
+                    <div id="engcomp-vespertino-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 31; i <= 45; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="engcomp-vespertino-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 46; i <= 60; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="engcomp-noturno" style="display: none;">
+                    <h4>Turma Noturna</h4>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('engcomp-noturno-a')">Turma A</button>
+                    <button class="btn btn-secondary mb-3" onclick="toggleTurma('engcomp-noturno-b')">Turma B</button>
+                    <div id="engcomp-noturno-a">
+                        <h5>Turma A</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 61; i <= 75; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="engcomp-noturno-b" style="display: none;">
+                        <h5>Turma B</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nota</th>
+                                    <th>Presença</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <script>
+                                    for (let i = 76; i <= 90; i++) {
+                                        document.write(`<tr><td>Aluno ${i}</td><td>${(Math.random() * 3 + 7).toFixed(1)}</td><td>${(Math.random() * 10 + 85).toFixed(0)}%</td></tr>`);
+                                    }
+                                </script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts externos separados -->
+    <script src="js/ranking.js"></script>
+    <script src="js/chamada.js"></script>
+    <script src="js/avaliacao.js"></script>
+
+    <!-- Modal de Edição -->
+    <div class="modal fade" id="modalEdicao" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Editar Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEdicao">
+                        <div class="mb-2">
+                            <label class="form-label">Presença:</label>
+                            <select class="form-select" id="presencaModal">
+                                <option value="">Selecione</option>
+                                <option value="Presente">Presente</option>
+                                <option value="Faltou">Faltou</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Data e Hora:</label>
+                            <input type="datetime-local" class="form-control" id="dataHoraModal">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Nota (Estrelas):</label>
+                            <input type="number" class="form-control" min="1" max="3" id="estrelaModal"
+                                placeholder="1: Bronze, 2: Prata, 3: Ouro">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Comentário:</label>
+                            <textarea class="form-control" id="comentarioModal" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary" onclick="salvarEdicao()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Exemplo de como preencher o nome do aluno dinamicamente
+        const nomeAluno = "Enzio Albéfaro"; // Substituir pelo nome do usuário logado
+        document.getElementById("nomeAluno").textContent = nomeAluno;
+    </script>
+
+</body>
+
+</html>

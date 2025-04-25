@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matérias - Ciência da Computação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .materia {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+        .materia:hover {
+            background-color: #eaeaea;
+        }
+        .detalhes {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Matérias - Ciência da Computação</h1>
+        <div class="materia" onclick="toggleDetalhes(this)">
+            <h2>Algoritmos e Estruturas de Dados</h2>
+            <div class="detalhes">
+                <p><strong>Professor:</strong> Dr. João Silva</p>
+                <p><strong>Descrição:</strong> Estudo de algoritmos, estruturas de dados e sua aplicação em problemas computacionais.</p>
+                <p><strong>Carga Horária:</strong> 60 horas</p>
+            </div>
+        </div>
+        <div class="materia" onclick="toggleDetalhes(this)">
+            <h2>Bancos de Dados</h2>
+            <div class="detalhes">
+                <p><strong>Professor:</strong> Dra. Maria Oliveira</p>
+                <p><strong>Descrição:</strong> Introdução a sistemas de gerenciamento de bancos de dados e SQL.</p>
+                <p><strong>Carga Horária:</strong> 50 horas</p>
+            </div>
+        </div>
+        <div class="materia" onclick="toggleDetalhes(this)">
+            <h2>Redes de Computadores</h2>
+            <div class="detalhes">
+                <p><strong>Professor:</strong> Prof. Carlos Mendes</p>
+                <p><strong>Descrição:</strong> Fundamentos de redes de computadores, protocolos e segurança.</p>
+                <p><strong>Carga Horária:</strong> 55 horas</p>
+            </div>
+        </div>
+        <div class="materia" onclick="toggleDetalhes(this)">
+            <h2>Engenharia de Software</h2>
+            <div class="detalhes">
+                <p><strong>Professor:</strong> Dra. Ana Costa</p>
+                <p><strong>Descrição:</strong> Princípios e práticas de desenvolvimento de software.</p>
+                <p><strong>Carga Horária:</strong> 60 horas</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetalhes(element) {
+            const detalhes = element.querySelector('.detalhes');
+            if (detalhes.style.display === 'block') {
+                detalhes.style.display = 'none';
+            } else {
+                detalhes.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Professor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #6A0DAD;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .voltar {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .voltar button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .voltar button:hover {
+            background-color: #333;
+        }
+        .bater-ponto button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .bater-ponto button:hover {
+            background-color: #333;
+        }
+        main {
+            padding: 20px;
+        }
+        .turmas ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .turmas li {
+            background: #e0e0e0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .turmas button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #6A0DAD;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .turmas button:hover {
+            background-color: #5a0b9a;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .modal h3 {
+            margin-top: 0;
+        }
+        .modal ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .modal button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #6A0DAD;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal button:hover {
+            background-color: #5a0b9a;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Área do Professor</h1>
+        <div class="voltar">
+            <button onclick="voltarPagina()">Voltar</button>
+        </div>
+    </header>
+    <main>
+        <!-- Informações do Professor -->
+        <section class="info-professor">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h3>Informações do Professor</h3>
+                    <p>Nome: João Silva</p>
+                    <p>Disciplina: Ciência da Computação</p>
+                    <p>Email: joao.silva@escola.com</p>
+                </div>
+                <div class="bater-ponto">
+                    <button onclick="abrirModalPonto()">Bater Ponto</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendário de Aulas -->
+        <section class="calendario">
+            <h3>Calendário de Aulas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Algoritmos - Turma A</td>
+                        <td>Estruturas de Dados - Turma B</td>
+                        <td>Redes de Computadores - Turma C</td>
+                        <td>Engenharia de Software - Turma A</td>
+                        <td>Bancos de Dados - Turma B</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Suas Turmas -->
+        <section class="turmas">
+            <h3>Suas Turmas</h3>
+            <ul>
+                <li>Turma A - Algoritmos (Manhã) 
+                    <button onclick="verAlunos('Turma A')">Ver Alunos</button>
+                </li>
+                <li>Turma B - Estruturas de Dados (Tarde) 
+                    <button onclick="verAlunos('Turma B')">Ver Alunos</button>
+                </li>
+                <li>Turma C - Redes de Computadores (Noite) 
+                    <button onclick="verAlunos('Turma C')">Ver Alunos</button>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Painel Flutuante para Alunos -->
+        <div class="overlay" id="overlay" onclick="fecharModal()"></div>
+        <div class="modal" id="modalAlunos">
+            <h3>Alunos da Turma</h3>
+            <ul id="listaAlunos"></ul>
+            <button onclick="fecharModal()">Fechar</button>
+        </div>
+
+        <!-- Modal para Bater Ponto -->
+        <div class="overlay" id="overlayPonto" onclick="fecharModalPonto()"></div>
+        <div class="modal" id="modalPonto">
+            <h3>Registrar Presença</h3>
+            <form>
+                <label for="diaPonto">Dia da Semana:</label>
+                <select id="diaPonto">
+                    <option value="seg">Segunda</option>
+                    <option value="ter">Terça</option>
+                    <option value="qua">Quarta</option>
+                    <option value="qui">Quinta</option>
+                    <option value="sex">Sexta</option>
+                </select>
+                <label for="presenca">Presença:</label>
+                <select id="presenca">
+                    <option value="presente">Presente</option>
+                    <option value="ausente">Ausente</option>
+                </select>
+                <button type="button" onclick="registrarPonto()">Salvar</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function verAlunos(turma) {
+            const alunosPorTurma = {
+                'Turma A': ['Ana', 'Bruno', 'Carlos', 'Diana', 'Eduardo'],
+                'Turma B': ['Fernanda', 'Gabriel', 'Helena', 'Igor', 'Juliana'],
+                'Turma C': ['Karla', 'Lucas', 'Mariana', 'Nicolas', 'Olivia']
+            };
+
+            const listaAlunos = document.getElementById('listaAlunos');
+            listaAlunos.innerHTML = '';
+
+            alunosPorTurma[turma].forEach(aluno => {
+                const li = document.createElement('li');
+                li.textContent = aluno;
+                listaAlunos.appendChild(li);
+            });
+
+            document.getElementById('modalAlunos').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function fecharModal() {
+            document.getElementById('modalAlunos').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function abrirModalPonto() {
+            document.getElementById('modalPonto').style.display = 'block';
+            document.getElementById('overlayPonto').style.display = 'block';
+        }
+
+        function fecharModalPonto() {
+            document.getElementById('modalPonto').style.display = 'none';
+            document.getElementById('overlayPonto').style.display = 'none';
+        }
+
+        function registrarPonto() {
+            const dia = document.getElementById('diaPonto').value;
+            const presenca = document.getElementById('presenca').value;
+
+            const icone = presenca === 'presente' ? '✔️' : '❌';
+            alert(`Ponto registrado para ${dia}: ${icone}`);
+            fecharModalPonto();
+        }
+
+        function voltarPagina() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
